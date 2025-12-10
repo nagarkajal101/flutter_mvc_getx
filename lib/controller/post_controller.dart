@@ -6,7 +6,7 @@ import 'package:task3/services/post_services.dart';
 class PostController extends GetxController{
   final PostServices service = PostServices();
 
-  final posts = <PostModel>[].obs;
+   final posts = <PostModel>[].obs;
     final  isLoading = true.obs;
 
     @override 
@@ -15,13 +15,12 @@ class PostController extends GetxController{
         getPosts(); }
 
   
-  Future<RxList<PostModel>> getPosts() async { 
+  void getPosts() async {
 
     try{
       isLoading.value = true;
       /// Fetch data from API
       posts.value= await service.fetchPosts();
-      return posts;
 
     }catch(e){
       /// Error message
